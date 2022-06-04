@@ -1,20 +1,16 @@
 package main
 
 import (
-	"flag"
-	"fmt"
+	"location4ip/config"
 	"log"
 	"net/http"
 )
 
 func main() {
-	// parse command line args
-	port := flag.Int("p", 8080, "-p <port>")
-	flag.Parse()
-	addr := fmt.Sprintf(":%d", *port)
-
+	config.Init()
 	http.HandleFunc("/location", GetIpLocationHandle)
-	log.Printf("listen addr %s", addr)
-	err := http.ListenAndServe(addr, nil)
+
+	log.Printf("listen addr %s", config.Settings.BindAddress)
+	err := http.ListenAndServe(config.Settings.BindAddress, nil)
 	log.Fatalln(err)
 }

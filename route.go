@@ -2,13 +2,16 @@ package main
 
 import (
 	"encoding/json"
+	"location4ip/location4ip"
 	"log"
 	"net"
 	"net/http"
 	"strings"
 )
 
+//
 // GetIpLocationHandle 获取Ip位置信息
+//
 func GetIpLocationHandle(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	ip := strings.TrimSpace(query.Get("ip"))
@@ -24,8 +27,7 @@ func GetIpLocationHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	locationService := new(DefaultLocationService)
-	location, err := locationService.GetIpLocation(ip)
+	location, err := location4ip.GetIpLocation(ip)
 	if err != nil {
 		errorResult := Result{Code: "500", Msg: "get ip location error"}
 		writeResponse(w, http.StatusInternalServerError, errorResult)
