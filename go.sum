@@ -1,0 +1,4 @@
+github.com/ip2location/ip2location-go/v9 v9.2.0 h1:ZWURUspTpe2gxMQGtcQScocBd73gZKUEWlHCFUJYLHk=
+github.com/ip2location/ip2location-go/v9 v9.2.0/go.mod h1:s5SV6YZL10TpfPpXw//7fEJC65G/yH7Oh+Tjq9JcQEQ=
+github.com/lionsoul2014/ip2region v2.2.0-release+incompatible h1:1qp9iks+69h7IGLazAplzS9Ca14HAxuD5c0rbFdPGy4=
+github.com/lionsoul2014/ip2region v2.2.0-release+incompatible/go.mod h1:+ZBN7PBoh5gG6/y0ZQ85vJDBe21WnfbRrQQwTfliJJI=

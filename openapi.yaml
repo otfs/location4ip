@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Location4IP
+  description: IP地址转换为地理位置
+  version: 1.0.0
+servers:
+  - url: 'http://127.0.0.1:8080'
+    description: local
+paths:
+  /location:
+    get:
+      summary: 获取Ip位置信息
+      operationId: GetIpLocation
+      parameters:
+        - in: query
+          name: ip
+          description: IP地址
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IpLocation"
+        400:
+          $ref: "#/components/responses/ErrorResponse"
+        500:
+          $ref: "#/components/responses/ErrorResponse"
+components:
+  schemas:
+    IpLocation:
+      description: Ip位置信息
+      properties:
+        ip:
+          type: string
+          description: IP地址
+        country:
+          type: string
+          description: 国家
+        region:
+          type: string
+          description: 地区（省）
+        city:
+          type: string
+          description: 城市
+  responses:
+    ErrorResponse:
+      description: fail
+      content:
+        application/json:
+          schema:
+            properties:
+              code:
+                type: string
+                description: 错误码
+              msg:
+                type: string
+                description: 提示消息
