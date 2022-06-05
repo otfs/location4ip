@@ -3,6 +3,8 @@ FROM golang:latest AS build
 ENV GOPROXY=https://goproxy.cn,direct
 WORKDIR /work
 
+COPY db/ /out/db
+
 COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
