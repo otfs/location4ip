@@ -39,8 +39,9 @@ func GetIpLocationHandle(w http.ResponseWriter, r *http.Request) {
 }
 
 func writeResponse(w http.ResponseWriter, httpStatus int, result interface{}) {
-	w.WriteHeader(httpStatus)
+	// Note: set header must before set http status code
 	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(httpStatus)
 
 	resultJson, err := json.Marshal(result)
 	if err != nil {

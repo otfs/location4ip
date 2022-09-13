@@ -16,6 +16,6 @@ RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w" -o /out/loca
 FROM alpine:latest
 WORKDIR /work
 COPY --from=build /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-COPY --from=build /out/* ./
+COPY --from=build /out/ ./
 EXPOSE 8080
 ENTRYPOINT ["./location4ip"]
