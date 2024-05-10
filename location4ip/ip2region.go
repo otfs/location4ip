@@ -15,7 +15,7 @@ var ip2regionDbLock sync.Mutex
 // GetIpLocationByIp2Region 获取IP位置信息（基于ip2region）
 //
 func GetIpLocationByIp2Region(ip string) (*IpLocation, error) {
-	if ip2locationDb == nil {
+	if ip2regionDb == nil {
 		if err := initIp2Region(); err != nil {
 			return nil, err
 		}

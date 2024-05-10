@@ -6,6 +6,7 @@ import "location4ip/config"
 type GetIpLocationFunc func(ip string) (*IpLocation, error)
 
 var ipLocationHandles = map[string]GetIpLocationFunc{
+	ProviderIpMixed: GetIpLocationByMixed,
 	ProviderIp2Region:   GetIpLocationByIp2Region,
 	ProviderIp2Location: GetIpLocationByIp2Location,
 }
@@ -13,11 +14,12 @@ var ipLocationHandles = map[string]GetIpLocationFunc{
 // GetIpLocation 获取IP位置信息
 func GetIpLocation(ip string) (*IpLocation, error) {
 	provider := config.Settings.Provider
-	ipLocationHandle := ipLocationHandles[provider]
-	return ipLocationHandle(ip)
+	handle := ipLocationHandles[provider]
+	return handle(ip)
 }
 
 const (
+	ProviderIpMixed = "mixed"
 	ProviderIp2Location = "ip2location"
 	ProviderIp2Region   = "ip2region"
 )

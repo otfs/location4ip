@@ -12,7 +12,7 @@ var Settings = NewConfigDefault()
 // 默认配置
 const (
 	DefaultPort              = 8080
-	DefaultProvider          = "ip2region"
+	DefaultProvider          = "mixed"
 	DefaultIp2LocationDbFile = "db/ip2location.bin"
 	DefaultIp2RegionDbFile   = "db/ip2region.xdb"
 )
